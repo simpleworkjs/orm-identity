@@ -19,12 +19,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wmantly/orm-identity.git"
+    "url": "git+https://github.com/simpleworkjs/orm-identity.git"
   },
   "bugs": {
-    "url": "https://github.com/wmantly/orm-identity/issues"
+    "url": "https://github.com/simpleworkjs/orm-identity/issues"
   },
-  "homepage": "https://github.com/wmantly/orm-identity#readme",
+  "homepage": "https://github.com/simpleworkjs/orm-identity#readme",
   "engines": {
     "node": ">=18.0.0"
   },
