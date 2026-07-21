@@ -4,7 +4,7 @@
   "description": "Identity and RBAC layer on top of @simpleworkjs/orm.",
   "main": "index.js",
   "scripts": {
-    "test": "node --test test/**/*.test.js"
+    "test": "node --test"
   },
   "keywords": [
     "orm",

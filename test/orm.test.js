@@ -128,3 +128,8 @@ test('Model permission evaluation respects admin, user, owner and public', async
   assert.strictEqual(task.hasPermission(taskOwner, 'update'), true, 'owner can update');
   assert.strictEqual(task.hasPermission(plainUser, 'update'), false, 'non-owner cannot update');
 });
+
+test('User.isAdmin and User.isValid are marked protectedFields (not client-settable via generic REST)', async function() {
+  const models = await init({conf: makeConf(), models: [Project, Task]});
+  assert.deepStrictEqual(models.User.protectedFields, ['isAdmin', 'isValid']);
+});
