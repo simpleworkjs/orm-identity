@@ -1,6 +1,6 @@
 {
   "name": "@simpleworkjs/orm-identity",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Identity and RBAC layer on top of @simpleworkjs/orm.",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,7 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@simpleworkjs/orm": "^0.1.1",
+    "@simpleworkjs/orm": "^0.1.2",
     "bcrypt": "^5.1.1",
     "uuid": "^9.0.1"
   },
