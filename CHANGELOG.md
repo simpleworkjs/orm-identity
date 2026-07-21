@@ -1,6 +1,14 @@
 # Changelog
 
-## Unreleased
+## 0.2.0
+
+### Changed
+
+- **Updated dependencies to clear known advisories.** `bcrypt` `^5.1.1` →
+  `^6.0.0` and `uuid` `^9.0.1` → `^11.1.1`, and bumped the `@simpleworkjs/orm`
+  range to `^0.2.0` (which carries its own dependency updates). Added an
+  `overrides` entry pinning `uuid` to `^11.1.1`. Consumers on `^0.1.x` should
+  bump to `^0.2.0`.
 
 ### Fixed
 
