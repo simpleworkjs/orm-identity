@@ -3,35 +3,33 @@
 /**
  * @simpleworkjs/orm-identity
  *
- * A model-first ORM with built-in identity and RBAC models.
+ * Identity and RBAC layer on top of @simpleworkjs/orm.
  *
  * Public API:
- *   const orm = require('@simpleworkjs/orm-identity');
- *   const {ORM, Model, fields, adapters, identity, auth, init} = orm;
+ *   const ormIdentity = require('@simpleworkjs/orm-identity');
+ *   const {ORM, Model, fields, adapters, identity, auth, init} = ormIdentity;
  *
  * Factory:
  *   const models = init({conf, models: [require('./models/Task')]});
  */
 
-const {ORM, Model} = require('./lib/orm');
-const fields = require('./lib/fields');
-const adapters = require('./lib/adapters');
+const baseORM = require('@simpleworkjs/orm');
 const identity = require('./lib/identity');
 const auth = require('./lib/auth');
 
 /**
- * Initialize the ORM with identity models plus app-specific models.
+ * Initialize the ORM with built-in identity models plus app-specific models.
  *
  * Options:
- *   conf     — configuration object with database/redis/ldap sections.
+ *   conf     — configuration object with orm section.
  *   models   — array or object of app Model classes.
  *   pubsub   — optional pub/sub instance.
  */
 function init(options) {
   options = options || {};
-  const orm = new ORM(options.conf || {}, options.pubsub);
+  const orm = new baseORM.ORM(options.conf || {}, options.pubsub);
 
-  // Identity models are always loaded first.
+  // Identity models are always loaded first so app models can reference them.
   const identityModels = Object.values(identity);
   const appModels = Array.isArray(options.models)
     ? options.models
@@ -41,10 +39,10 @@ function init(options) {
 }
 
 module.exports = {
-  ORM,
-  Model,
-  fields,
-  adapters,
+  ORM: baseORM.ORM,
+  Model: baseORM.Model,
+  fields: baseORM.fields,
+  adapters: baseORM.adapters,
   identity,
   auth,
   init,

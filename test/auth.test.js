@@ -8,7 +8,7 @@ const {login, resolvePermissions, issueAuthToken, requireModelPermission} = orm.
 
 function makeConf() {
   return {
-    database: {
+    orm: {
       dialect: 'sqlite',
       storage: ':memory:',
       logging: false,
