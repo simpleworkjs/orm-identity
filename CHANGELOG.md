@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.2.1
+
+### Added
+
+- **DB-backed, runtime-editable access rules (reggy-style).** `Role` gains
+  `entityModel`, `entityPermissions` (a `json` `{owner,group,everyone}×{crud}`
+  grid), and `isActive` — a Role can govern a model with tiered CRUD grants
+  (`lib/identity/Role.js`). New `auth` helpers (`lib/auth.js`):
+  `installAccessPolicy` (seeds a default governing Role per model from its
+  `static permissions`, builds the merged `orm._accessPolicy`, and rebuilds it
+  whenever a Role changes), `rebuildAccessPolicy`, and `seedDefaultRoles`.
+  `init()` installs the policy after loading. The base model reads the policy for
+  its access decisions; existing token behaviour is preserved by the seeded
+  defaults until an admin edits a rule.
+
 ## 0.2.0
 
 ### Changed

@@ -25,7 +25,7 @@ const auth = require('./lib/auth');
  *   models   — array or object of app Model classes.
  *   pubsub   — optional pub/sub instance.
  */
-function init(options) {
+async function init(options) {
   options = options || {};
   const orm = new baseORM.ORM(options.conf || {}, options.pubsub);
 
@@ -35,7 +35,10 @@ function init(options) {
     ? options.models
     : Object.values(options.models || {});
 
-  return orm.load([identityModels, appModels]);
+  const models = await orm.load([identityModels, appModels]);
+  // Seed default access rules and build the runtime permission policy.
+  await auth.installAccessPolicy(orm, models);
+  return models;
 }
 
 module.exports = {

@@ -1,6 +1,6 @@
 {
   "name": "@simpleworkjs/orm-identity",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Identity and RBAC layer on top of @simpleworkjs/orm.",
   "main": "index.js",
   "scripts": {
