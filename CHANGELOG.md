@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.2.3
+
+### Changed
+
+- Raised the `@simpleworkjs/orm` dependency floor to `^0.2.6` so installs pull the
+  ORM release carrying hooks/validation, soft-delete, query operators,
+  transactions, and `belongsToMany`. No identity code changes — the runtime access
+  policy already works against `orm ^0.2.5`; this pins the newer ORM surface for
+  apps building on the identity layer.
+
+## 0.2.2
+
+### Changed
+
+- Raised the `@simpleworkjs/orm` dependency floor from `^0.2.0` to `^0.2.5` so a
+  fresh install always resolves an ORM with the `json` field type and the runtime
+  `_accessPolicy` hook that the DB-backed access rules (0.2.1) depend on. Without
+  this, `^0.2.0` could resolve to a pre-`json` ORM and the entity-permission grants
+  on Roles would fail to persist/evaluate. Code identical to 0.2.1.
+
 ## 0.2.1
 
 ### Added
